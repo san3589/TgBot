@@ -1,5 +1,6 @@
 import asyncio
 from aiogram import Bot, Dispatcher
+from aiogram.fsm.strategy import FSMStrategy
 from dotenv import find_dotenv, load_dotenv
 import os
 load_dotenv(find_dotenv())
@@ -8,8 +9,9 @@ from handlers.user_private import user_private_router
 from handlers.user_group import user_group_router
 
 bot = Bot(token=os.getenv('TOKEN'))
+bot.my_admins_list = []
 
-dp = Dispatcher()
+dp = Dispatcher(fsm_strategy=FSMStrategy.USER_IN_CHAT)
 dp.include_router(admin_router)
 dp.include_router(user_private_router)
 dp.include_router(user_group_router)

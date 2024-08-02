@@ -4,6 +4,8 @@ kb_tarrifs = ReplyKeyboardMarkup(
     keyboard=[
         [
             KeyboardButton(text="БАЗОВЫЙ (самостоятельный) 9000 ₽"),
+            ],
+        [
             KeyboardButton(text="УГЛУБЛЕННЫЙ (с поддержкой куратора) 19000 ₽")
             ],
             [
@@ -16,3 +18,11 @@ kb_tarrifs = ReplyKeyboardMarkup(
 )
 
 delkb = ReplyKeyboardRemove()
+adminkb = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text="Выгрузка новых заявок")
+        ]
+    ],
+    resize_keyboard=True
+)
