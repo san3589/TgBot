@@ -13,11 +13,7 @@ admin_router.message.filter(ChatTypeFilter(['private']), IsAdmin())
 
 class AdminState(StatesGroup):
     first_point = State()
-    new_lids_add = State()
     ban_word = State()
-    add_ban_word = State()
-    look_ban_word = State()
-    delete_ban_word = State()
     finish_add = State()
     del_finish = State()
 
@@ -34,10 +30,12 @@ async def get_lids(message: types.Message, state: FSMContext):
     await message.answer(text="Пока не готово", reply_markup=delkb)
     await state.clear()
 
+
 @admin_router.message(AdminState.first_point, F.text == "Банворд")
 async def banword(message: types.Message, state: FSMContext):
     await message.answer(text="Выберите действие", reply_markup=banword_kb)
     await state.set_state(AdminState.ban_word)
+
 
 @admin_router.message(AdminState.ban_word, F.text == "Добавить запрещенные слова")
 async def handle_add_banword(message: types.Message, state: FSMContext):
@@ -50,12 +48,14 @@ async def handle_add_banword(message: types.Message, state: FSMContext):
     )
     await state.set_state(AdminState.finish_add)
 
+
 @admin_router.message(AdminState.ban_word, F.text == "Посмотреть запрещенные слова")
 async def handle_look_banword(message: types.Message, state: FSMContext):
     with open('ban.txt', 'r', encoding='utf-8') as file:
         src = file.readlines()
     await message.answer(text=f"{''.join(src)}", reply_markup=delkb)
     await state.clear()
+
 
 @admin_router.message(AdminState.ban_word, F.text == "Удалить запрещенные слова")
 async def handle_delete_banword(message: types.Message, state: FSMContext):

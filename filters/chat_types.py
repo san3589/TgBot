@@ -1,11 +1,8 @@
 import os
-
 from aiogram.filters import Filter
 from aiogram import types, Bot
-from dotenv import load_dotenv, find_dotenv
-load_dotenv(find_dotenv())
 
-public_id = os.getenv("PUBLIC_GROUP_ID")
+
 class ChatTypeFilter(Filter):
 
     def __init__(self, chat_types: list[str]):

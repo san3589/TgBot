@@ -4,7 +4,6 @@ from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 from aiogram.exceptions import AiogramError
 import os
-from dotenv import find_dotenv
 
 import keyboards.reply
 from filters.chat_types import ChatTypeFilter

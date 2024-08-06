@@ -4,6 +4,7 @@ from aiogram.fsm.strategy import FSMStrategy
 from dotenv import find_dotenv, load_dotenv
 import os
 load_dotenv(find_dotenv())
+
 from handlers.admin import admin_router
 from handlers.user_private import user_private_router
 from handlers.user_group import user_group_router
@@ -18,8 +19,6 @@ dp.include_router(admin_router)
 dp.include_router(user_private_router)
 dp.include_router(user_group_router)
 dp.include_router(public_group_router)
-
-
 
 
 async def main():
