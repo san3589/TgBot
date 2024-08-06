@@ -1,11 +1,13 @@
 from aiogram import Router, types, Bot
 from aiogram.filters import Command
-from filters.chat_types import ChatTypeFilter
+from filters.chat_types import ChatTypeFilter, Moderator
 from dotenv import find_dotenv
 import os
+from handlers.public_group import public_group_router
 
 user_group_router = Router()
-user_group_router.message.filter(ChatTypeFilter(['group']))
+user_group_router.message.filter(ChatTypeFilter(['group']), Moderator(-4108907218))
+# user_group_router.include_router(public_group_router)
 
 
 @user_group_router.message(Command('admin'))

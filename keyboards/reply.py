@@ -22,6 +22,24 @@ adminkb = ReplyKeyboardMarkup(
     keyboard=[
         [
             KeyboardButton(text="Выгрузка новых заявок")
+        ],
+        [
+            KeyboardButton(text="Банворд")
+        ]
+    ],
+    resize_keyboard=True
+)
+
+banword_kb = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text="Добавить запрещенные слова")
+        ],
+        [
+            KeyboardButton(text="Посмотреть запрещенные слова")
+        ],
+        [
+            KeyboardButton(text='Удалить запрещенные слова')
         ]
     ],
     resize_keyboard=True
